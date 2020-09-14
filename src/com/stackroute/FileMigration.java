@@ -1,29 +1,31 @@
 package com.stackroute;
 /*
 Problem 3
-        ## Problem Statement: Transfer data from one file to another
+        Problem Statement: Transfer data from one file to another
         **Given two file names read the first file and add the content in the second file using
         bufferedStream and handle exception using throws**
         **This exercise contains a class named FileMigration with the following method:**
+
         +fileContentDuplicator(String, String) : String
         - Should take two String values as input and return a string as result
         - Should validate the input String by checking whether it is null or empty
         - Should return an Error String when the file is empty or blank space
         - Should read data from file of name first String using bufferedInputStream and
         write in file of name second String using bufferedOutputStream
-        ## Example
+
+        Example
         Sample Input:
         text.txt, testBackup.txt
         Expected Output:
         Hi my name is
-        --------------------------------------------------------
+
         Sample Input:
         test , testBackup.txt
         Expected Output:
         Throw IOException
-        --------------------------------------------------------
+
         Sample Input:
-        test.txt , null
+        text.txt , null
         Expected Output:
         Given fileName to read or write is empty, null or blank space
 */
@@ -34,10 +36,10 @@ import java.util.Scanner;
 public class FileMigration {
     //fileContentDuplicator() for duplicating the files
     public static String fileContentDuplicator(String fileOne, String fileTwo) throws IOException {
-        File file1 = new File(fileOne);
-        File file2 = new File(fileTwo);
-        if (file1.exists() && file2.exists()) {
-            if (file1.length() == 0 || file1.equals(null) && file2.length() == 0 || file2.equals(null)) {
+        File file1 = new File("data\\" + fileOne);
+        File file2 = new File("data\\" + fileTwo);
+        if (file1.exists()) {
+            if (file1.length() == 0 || fileOne.equals(null) || file2.length() == 0 || fileTwo.equals(null)) {
                 return "Given fileName to read or write is empty, null or blank space";
             } else {
                 String result = "";
@@ -55,8 +57,6 @@ public class FileMigration {
                     bufferedOutputStream.flush();
                     bufferedInputStream.close();
                     bufferedOutputStream.close();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

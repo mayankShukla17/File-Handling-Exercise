@@ -1,16 +1,18 @@
 package com.stackroute;
 /*
 Problem2
-        ## Problem Statement: Read the content from the given file(input.txt) and write the
-        result to another file(output.txt) without redundant lines ##
+        Problem Statement: Read the content from the given file(input.txt) and write the
+        result to another file(output.txt) without redundant lines
         **Given a file by name input.txt, read content using FileInputStream and write result to
         file by name output.txt by using FileOutputStream**
         **This exercise contains a class named RemoveDuplicateLines with the following
         method:**
+
         +removeDuplicateLines(void) : void
         -Should read content line by line from input.txt
         -Should write result to output.txt
-        ## Example
+
+        Example
         Sample Input:
         input.txt
         JVM
@@ -32,7 +34,7 @@ public class RemoveDuplicateLines {
     //removeDuplicateLines() for Removing the duplicates
     public static void removeDuplicateLines() {
         try {
-            FileInputStream fileInputStream = new FileInputStream("input.txt");
+            FileInputStream fileInputStream = new FileInputStream("data\\input.txt");
             DataInputStream dataInputStream = new DataInputStream(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(dataInputStream));
             String stringLine;
@@ -43,13 +45,13 @@ public class RemoveDuplicateLines {
                 // Print the content on the console
                 set.add(stringLine);
             }
-            FileOutputStream fileOutputStream = new FileOutputStream(new File("output.txt"));
+            FileOutputStream fileOutputStream = new FileOutputStream(new File("data\\output.txt"));
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream);
             BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
 
             //Write the data one by one in file
-            for (String s : set) {
-                bufferedWriter.write(s);
+            for (String string : set) {
+                bufferedWriter.write(string);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
             }

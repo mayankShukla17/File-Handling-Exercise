@@ -1,22 +1,24 @@
 package com.stackroute;
 /*
 Problem1
-        ## Problem Statement: Read and add content to a file
+        Problem Statement: Read and add content to a file
         **Given a filename and content read the file and add the content in the file using
         fileInputStream and try with resources**
         **This exercise contains a class named FileEdition with the following method:**
+
         +fileEditor(String, String) : String
         - Should take two String values as input and return a string as result
         - Should validate the input by checking whether it is null,empty or blank space
         - Should append the second string, content in the file with file name, first string
         - Should also handle exceptions thrown by logic using try with resources and
         catch
-        ## Example
+
+        Example
         Sample Input:
         text.txt, Abraham Lincoln
         Expected Output:
         Hi my name is Abraham Lincoln
-        --------------------------------------------------------
+
         Sample Input:
         test , Bill Clinton
         Expected Output:
@@ -29,7 +31,8 @@ import java.util.Scanner;
 public class FileEdition {
     //fileEditor() for taking input of file and String
     public static String fileEditor(String fileName, String string) {
-        File file = new File(fileName);
+        String filePath = "data\\" + fileName;
+        File file = new File(filePath);
         if (file.exists()) {
             if (string.length() == 0 || string.equals(null) || string.contains("   ")) {
                 return "Please don't enter null or blank spaces or null as a content";
